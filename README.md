@@ -14,3 +14,5 @@ Many curves can be applied by multiple selection.
 ![Alt text](https://github.com/squarednob/Blender_change_multiple_curve_origin/blob/master/screenshots/change_multiple_curve_origin_search.png)
 3. in the bottom left panel, you can change axis to calculate max or min, and max or min to choose a vertex to place curve's origin.
 ![Alt text](https://github.com/squarednob/Blender_change_multiple_curve_origin/blob/master/screenshots/change_multiple_curve_origin_options.png)
+4. The resulting origins are relocated, for the example, on each vertex at max value of x axis.
+![Alt text](https://github.com/squarednob/Blender_change_multiple_curve_origin/blob/master/screenshots/change_multiple_curve_origin_result)
