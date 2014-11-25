@@ -8,15 +8,15 @@ maxmin='max'/'min'. maxmin is comaring criteria by max or min.
 '''
 
 bl_info = {
-    "name": "Change Multiple Curve Origins",
-    "author": "testman",
+    "name": "Change Multiple Curve Origin",
+    "author": "Squared Nob",
     "version": (0, 1),
     "blender": (2, 7, 1),
-    "location": "", #blender内でのボタンの場所を設定。
+    "location": "",
     "description": "Change multiple curve origins by multiple selection",
-    "warning": "", #user preferenceに表示するwarning文。
-    "wiki_url": "",
-    "tracker_url": "",
+    "warning": "", 
+    "wiki_url": "https://github.com/squarednob/Blender_change_multiple_curve_origin",
+    "tracker_url": "https://github.com/squarednob/Blender_change_multiple_curve_origin",
     "category": "Object"}
 
 import bpy
@@ -78,17 +78,14 @@ def getMaxOrMinVertex(curve,xyz='x',maxmin='max'):
                     vert_tip_point = coord                             
     return vert_tip_point
 
-# Execute.
-#changeMultipleCurveOrigin(xyz='x', maxmin='max')
-
-# operatorを引数に入れることで、blender内の名前やexecute内で実行したときの動作を設定。
+# Main class
 class ChangeMultipleCurveOrigin(bpy.types.Operator):
-    """My Object Moving Script"""      # blender will use this as a tooltip for menu items and buttons.
+    """Change Multipe Curve Origins"""      # blender will use this as a tooltip for menu items and buttons.
     bl_idname = "object.change_multiple_curve_origin"        # unique identifier for buttons and menu items to reference.
-    bl_label = "Change multiple curve origin"         # display name in the interface.検索するときはこの名前を使う。
+    bl_label = "Change multiple curve origin"         # display name in the interface.
     bl_options = {'REGISTER', 'UNDO'}  # enable undo for the operator.
 
-    # 入力インプットをbpy.propsから取る。クラス内で使う時はself.xyzのようにする。
+    # Get user input.
     xyz = bpy.props.StringProperty(name="Choose x/y/z direction",
             description="x/y/z direction to compare location of verteces",
             default="x")
@@ -97,16 +94,14 @@ class ChangeMultipleCurveOrigin(bpy.types.Operator):
             default="max")
 
     def execute(self, context):        # execute() is called by blender when running the operator.
-
-        changeMultipleCurveOrigin(xyz=self.xyz, maxmin=self.maxmin) #自分で作った関数をここで実行。
+        # Execute main function
+        changeMultipleCurveOrigin(xyz=self.xyz, maxmin=self.maxmin)
 
         return {'FINISHED'}            # this lets blender know the operator finished successfully.
 
-#アドオンに登録した時の動作。
 def register():
     bpy.utils.register_module(__name__)
 
-#アドオンの登録を外した時の動作。
 def unregister():
     bpy.utils.unregister_module(__name__)
 
